@@ -15,29 +15,34 @@ namespace ExploreMumbai
         {
             if (Session["session_id"] == null)
             {
+
                 Response.Redirect("Login.aspx");
 
             }
-            string userId = Session["User_id"].ToString();
-            string connectionString = "Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            else
             {
-                connection.Open();
-                string query = "SELECT * from UserInfo where User_id = @User_id";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string userId = Session["User_id"].ToString();
+                string connectionString = "Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@User_id", userId);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    string query = "SELECT * from UserInfo where User_id = @User_id";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        rptGuides.DataSource = reader;
-                        rptGuides.DataBind();
+                        command.Parameters.AddWithValue("@User_id", userId);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            rptGuides.DataSource = reader;
+                            rptGuides.DataBind();
+                        }
                     }
                 }
             }
         }
         protected void BtnLogout_Click(object sender, EventArgs e)
-        {           
+        {
             Session["session_id"] = null;
+            Session["User_id"] = null;
             Response.Redirect("Login.aspx");
 
         }

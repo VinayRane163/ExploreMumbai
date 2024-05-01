@@ -30,13 +30,13 @@
         }
 
         .login-container {
-            max-width: 600px;
+            max-width: 650px;
             margin: auto;
             margin-top: 50px;
         }
 
         .card-header {
-            background-color: red;
+            background-color: lavender;
             color: black;
             text-align: center;
             font-weight: bold;
@@ -45,12 +45,12 @@
         .card {
             border: 1px solid rgba(0, 0, 0, .125);
             border-radius: .25rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .5);
         }
 
         .btn-login {
-        background-color: red;
-        color: white;
+        background-color: lavender;
+        color: black;
         width: 100%;
         margin-top: 20px;
         }
@@ -76,10 +76,21 @@
                         <label for="Tour_Name">Tour Name:</label>
                         <asp:TextBox ID="Tour_Name" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="Tour_Price">Tour Price:</label>
-                        <asp:TextBox ID="Tour_Price" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+
+
+                  <div class="form-group col-md-6">
+    <label for="Tour_Price">Tour Price:</label>
+    <asp:TextBox ID="Tour_Price" runat="server" CssClass="form-control"></asp:TextBox>
+    <asp:RegularExpressionValidator ID="TourPriceValidator" runat="server" 
+        ControlToValidate="Tour_Price" 
+        ErrorMessage="ENTER PRICE ONLY" 
+        ValidationExpression="^\d+(\.\d+)?$" 
+        CssClass="text-danger">
+    </asp:RegularExpressionValidator>
+</div>
+
+
+
                   </div>
                     <div class="form-row">
                          </div>

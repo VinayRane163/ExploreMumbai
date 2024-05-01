@@ -24,20 +24,22 @@
         }
 
         .card-header {
-            background-color: #FF0000;
-            color: white;
+            background-color: lightblue;
+            color: black;
             text-align: center;
             font-weight: bold;
         }
 
         .btn-login {
-            background-color: #FF0000;
-            color: white;
-            width: 100%;
-            margin-top: 20px;
-        }
+            background-color: lightblue;
+            color: black;
+            width: 100%;              
+            border-color: black;
+            border-radius: .25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+                    }
         .User-link {
-          background-color : #28a745;
+          background-color : lightblue;
             display: block;
             text-align: center;
             margin-top: 20px;
@@ -47,19 +49,15 @@
             border: 1px solid black;
             border-radius: 5px;
             cursor: pointer;
-            width : 100%;
+            width : 15%;
+        }
+        .User-link:hover{
+            color:black;
+            text-decoration:none;
         }
     </style>
         <script type="text/javascript">
-            function showFlashMessage(message)
-            {
-                var flashMessage = document.getElementById('flashMessage');
-                flashMessage.innerHTML = message;
-                flashMessage.style.display = 'block';
-                setTimeout(function () {
-                    flashMessage.style.display = 'none';
-                }, 2000);
-            }
+           
             // for button to see and unsee password
 
             function togglePasswordVisibility() {
@@ -92,11 +90,13 @@
                        <label for="TxtPassword">Password:</label>
                        <div class="input-group">
                            <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control" Width="85%" TextMode="Password"></asp:TextBox>
+
                            <div class="input-group-append">
                                <button type="button" class="btn btn-light" id="btnShowPassword" onclick="togglePasswordVisibility()">
                                    <img src="https://static.thenounproject.com/png/2540381-200.png" alt="Show Password" style="width: 20px; height: 20px;" />
                                </button>
                            </div>
+
                        </div>
                    </div>
 
@@ -105,15 +105,13 @@
                     <asp:Button ID="BtnLogin" runat="server" OnClick="Button1_Click" Text="Login" CssClass="btn btn-login" />
 
                     <br />
-                    <br />
-                    <br />
-
-                    <asp:HyperLink ID="UserLink" runat="server" NavigateUrl="Login.aspx" CssClass="User-link">User Login </asp:HyperLink>
-
+                   
+                    <center>
+                    <asp:HyperLink ID="UserLink" runat="server" NavigateUrl="Login.aspx" CssClass="User-link">back  </asp:HyperLink>
+                     </center>
                 </div>
             </div>
         </div>
-       <div id="flashMessage" style="display: none; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; margin-top: 20px; border-radius: 5px;"></div>
 
     </form>
 </body>

@@ -18,27 +18,28 @@ namespace ExploreMumbai
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(Guide_FirstName.Text) ||
+            string.IsNullOrEmpty(Guide_LastName.Text) ||
+            string.IsNullOrEmpty(Guide_Education.Text) ||
+            string.IsNullOrEmpty(Guide_Age.Text) ||
+            string.IsNullOrEmpty(Guide_Contact.Text) ||
+            string.IsNullOrEmpty(Guide_Description.Text))
+            {
+                string successScript = "alert('fill all fields');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "RegistrationSuccessScript", successScript, true);
+                return;
+            }
+
             // Check if a file is selected
             if (imageUpload.HasFile)
             {
                 // Get the file name and extension
                 string fileName = Path.GetFileName(imageUpload.FileName);
 
-                // Specify the directory where you want to save the images
-                string uploadDirectory = Server.MapPath("~/Images/");
+                byte[] fileData = imageUpload.FileBytes;
 
-                // Create the directory if it does not exist
-                if (!Directory.Exists(uploadDirectory))
-                {
-                    Directory.CreateDirectory(uploadDirectory);
-                }
-
-                // Save the file to the server
-                string filePath = Path.Combine(uploadDirectory, fileName);
-                imageUpload.SaveAs(filePath);
-
-                // Save the file path to the database
-                SaveToDatabase(fileName);
+                SaveToDatabase(fileName, fileData);
 
 
             }
@@ -64,7 +65,7 @@ namespace ExploreMumbai
         }
 
 
-        private void SaveToDatabase(string fileName)
+        private void SaveToDatabase(string fileName, byte[] fileData)
         {
             // Connection string
             string connectionString = "Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True";
@@ -97,7 +98,6 @@ namespace ExploreMumbai
                         cmd.Parameters.AddWithValue("@Age", Guide_Age.Text);
                         cmd.Parameters.AddWithValue("@Description", Guide_Description.Text);
                         cmd.Parameters.AddWithValue("@Guide_Contact", Guide_Contact.Text);
-                        byte[] fileData = File.ReadAllBytes(Server.MapPath("~/Images/") + fileName);
 
                         // Use SqlDbType.VarBinary for binary data
                         cmd.Parameters.Add("@Image", System.Data.SqlDbType.VarBinary).Value = fileData;
@@ -105,10 +105,12 @@ namespace ExploreMumbai
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
-                        ClearTextboxes();
+                        
 
                         string successScript = "alert('Succesfully registered');";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "RegistrationSuccessScript", successScript, true);
+                        ClearTextboxes();
+
                     }
                     void ClearTextboxes()
                     {

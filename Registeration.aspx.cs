@@ -27,6 +27,14 @@ namespace ExploreMumbai
                 // Email already exists, show an error message
                 string script = "alert('Email address is already in use. Please choose a different one.');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "EmailExistsScript", script, true);
+                return;
+            }
+            if(IsNumberAlreadyExists(txt_mobile.Text))
+            {
+                string script = "alert('number is already in use. Please choose a different one.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "EmailExistsScript", script, true);
+                return;
+
             }
             else
             {
@@ -42,10 +50,12 @@ namespace ExploreMumbai
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 cleartext();
-                
-                // pop up if registeration succesful
+
+                // pop up if registration successful
                 string successScript = "alert('Registration successful. You can now log in.');";
+                successScript += "window.location.href = 'login.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "RegistrationSuccessScript", successScript, true);
+
             }
             void cleartext()
                 {
@@ -69,6 +79,18 @@ namespace ExploreMumbai
 
             return count > 0;
         }
+        private bool IsNumberAlreadyExists(string number)
+        {
+            // Check if the email already exists in the database
+            SqlConnection conn = new SqlConnection("Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True");
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM UserInfo WHERE User_mobile = @number", conn);
+            cmd.Parameters.AddWithValue("@number", number);
 
+            conn.Open();
+            int count = (int)cmd.ExecuteScalar();
+            conn.Close();
+
+            return count > 0;
+        }
     }
 }

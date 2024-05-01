@@ -36,14 +36,15 @@ namespace ExploreMumbai
 
             if (ds.Tables["AdminInfo"].Rows.Count == 0)
             {
-                string script = "showFlashMessage('Invalid User or Password');";
+                string script = "alert('Invalid adminid or Password');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "InvalidUserScript", script, true);
             }
             else
             {
-                Session.Timeout = 60;
+                Session.Timeout = 6000;
                 Session["session_id"] = Session.SessionID;
                 Session["Admin_id"] = TxtUsername.Text;
+                Session["User_id"] = TxtUsername.Text;
                 Response.Redirect("Admin_Panel.aspx");
             }
         }

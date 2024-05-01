@@ -1,0 +1,114 @@
+sql.bsite.net\\MSSQL2016;Database=exploremumbai_ExploreMumbai
+use exploremumbai_ExploreMumbai;
+
+CREATE TABLE AdminInfo(
+    Admin_id varchar(255) PRIMARY KEY,
+    Admin_password varchar(255) NOT NULL
+);
+
+CREATE TABLE booking(
+    BookingID INT IDENTITY(1,1) PRIMARY KEY,
+    User_id varchar(255),
+    User_Name varchar(255),
+    User_mobile varchar(15),
+    User_Country NVARCHAR(50),
+    User_Address NVARCHAR(255),
+    travel_date DATE,
+    Tour_Name NVARCHAR(100),
+    Tour_Price DECIMAL(18,2),
+    Tour_People_Number INT,
+    Tour_Price_Total DECIMAL(18,2),
+    GuideName NVARCHAR(100),
+    Guideld varchar(255)
+);
+
+
+CREATE TABLE GuideInfo
+(
+    GuideID INT IDENTITY(0,1) PRIMARY KEY,
+    Guide_FirstName VARCHAR(255),
+    Guide_LastName VARCHAR(255),
+    Guide_Education VARCHAR(255),
+    Guide_Age VARCHAR(255),
+    Guide_Contact VARCHAR(255),
+    Guide_Description TEXT,
+    Guide_Image VARBINARY(MAX)
+);
+
+CREATE TABLE Reviews (
+    userid INT,
+    username VARCHAR(255),
+    review TEXT,
+);
+
+CREATE TABLE ToursInfo (
+    Tour_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Tour_Name VARCHAR(255) NOT NULL,
+    Tour_Price INT NOT NULL,
+    Tour_Description TEXT NOT NULL,
+    Tour_Image VARBINARY(MAX) NOT NULL
+);
+
+CREATE TABLE UserInfo(
+    User_Name varchar(255) NOT NULL,
+    User_id varchar(255) NOT NULL,
+    User_password varchar(255) NOT NULL,
+    User_mobile varchar(255) NOT NULL
+);
+
+CREATE TABLE GuideReviews (
+    UserId varchar(255),
+    Guide_name varchar(255),
+    Username VARCHAR(255),
+    Review TEXT,
+);
+
+
+  create table Applicaton(
+ Application_ID  INT IDENTITY(1,1),
+ Name varchar(255), 
+Email varchar(255),
+ Contact varchar(255),
+CV varbinary(MAX)
+);
+
+create table cancelaton_request(
+  BookingID varchar(255),
+  Reason varchar(255)
+  );
+
+
+
+
+
+
+
+
+use ExploreMumbai
+
+
+CREATE TABLE cred (
+    Card_Type varchar(255),
+    Issuing_Bank varchar(255),
+    Card_Number varchar(255),
+    Card_Holder varchar(255),
+    CVV_CVV2 varchar(255),
+    Issue_Date varchar(255),
+    Expiry_Date varchar(255),
+    Billing_Date varchar(255),
+    Card_PIN varchar(255),
+    Credit_Limit varchar(255)
+);
+
+-- Use BULK INSERT to import data from CSV file
+
+
+BULK INSERT cred
+FROM 'C:\Users\vinay\OneDrive\Desktop\1000 CC Records.csv'
+WITH (
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    FIRSTROW = 2,  -- Skip the header row if needed
+    CODEPAGE = 'ACP'  -- Change the code page if necessary
+);
+truncate table cred

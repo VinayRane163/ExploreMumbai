@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <style> 
         .header{
-            background-image:url('https://indianparyatak.com/wp-content/uploads/2022/09/juhu-beach-mumbai-indian-tourism-entry-fee-timings-holidays-reviews-header-1.jpg');
+            background-color:lavender;
             background-repeat:no-repeat;
              background-size: cover;
              background-position: center center;
@@ -23,11 +23,11 @@
         }
         
         footer{
-            background-color: antiquewhite;
+            background-color: lavender;
         }
 
         .button{
-            background-image:url('https://e7.pngegg.com/pngimages/609/720/png-clipart-cranberry-yellow-button-gradient-rounded-blank-background-color-web-design.png');
+            background-color:lightblue;
             background-repeat:no-repeat;
              background-size: auto;
              background-position: center center;
@@ -46,7 +46,9 @@
                 <li class="nav-item"><a class="nav-link color" href="Tours.aspx">Tours</a></li>
                 <li class="nav-item"><a class="nav-link color" href="Guide_Info.aspx">Guide</a></li>
                 <li class="nav-item"><a class="nav-link color" href="Book.aspx">Book Now</a></li>
+                <li class="nav-item"><a class="nav-link color" href="guidereview.aspx">Guide Reviews</a></li>
                 <li class="nav-item"><a class="nav-link color" href="Reviews.aspx">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link color" href="users_booked.aspx">Your Bookings</a></li>
                 <li class="nav-item"><a class="nav-link color" href="Must_Read.aspx">Must Read</a></li>
                 <li class="nav-item"><a class="nav-link color" href="#contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link color" href="User_Panel.aspx">User Panel</a></li>
@@ -63,7 +65,7 @@
     <section id="tours" class="container my-5">
         <h2 class="mb-4">Popular Tours</h2>
 
-        <a href="tours.html" class="btn button mb-4 ">View All Tours</a>
+        <a href="Tours.aspx" class="btn button mb-4 ">View All Tours</a>
 
         <div class="card mb-3">
             <img src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Gateway-to-India_0.jpg" />
@@ -92,7 +94,9 @@
     <section class=" color text-center py-3 bottom">
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>For inquiries and more information, contact us at <a href="mailto:exploremumbai69@gmail.com" class="color">exploremumbai69@gmail.com</a></p>
+            <p>For inquiries and more information, contact us at <a href="mailto:exploremumbai69@gmail.com" class="color">exploremumbai69@gmail.com</a> or <a href="tel:+91 8450991865" class="color">8450991865</a></p><br />
+             Wanna work as a Guide <a href="Application.aspx" >Apply here</a>
+                        
         </section>
     </section>
         </footer>

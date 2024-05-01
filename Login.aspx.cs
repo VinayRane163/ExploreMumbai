@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI;
 
 namespace ExploreMumbai
 {
@@ -15,7 +11,7 @@ namespace ExploreMumbai
         {
 
         }
-               
+
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -37,12 +33,12 @@ namespace ExploreMumbai
 
             if (ds.Tables["UserInfo"].Rows.Count == 0)
             {
-                string script = "showFlashMessage('Invalid User or Password');";
+                string script = "alert('Invalid User or Password');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "InvalidUserScript", script, true);
             }
             else
             {
-                Session.Timeout = 100;
+                Session.Timeout = 1000;
                 Session["session_id"] = Session.SessionID;
                 Session["User_id"] = TxtUsername.Text;
                 Response.Redirect("home.aspx");

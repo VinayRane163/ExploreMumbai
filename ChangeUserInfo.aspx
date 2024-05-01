@@ -12,7 +12,7 @@
       }
 
       .login-container {
-                     max-width: 600px;
+           max-width: 600px;
           margin: auto;
           margin-top: 50px;
       }
@@ -24,19 +24,22 @@
       }
 
       .card-header {
-          background-color: mediumpurple;
-          color: white;
+          background-color: lavender;
+          color: black;
           text-align: center;
           font-weight: bold;
       }
 
       .btn-login {
-          background-color: mediumpurple;
-          color: white;
+          background-color: lavender;
+          color: black;
           width: 100%;
           margin-top: 20px;
       }  
-
+      .btn{
+          color:black;
+          background-color:lavender;
+      }
       
   </style>
       
@@ -59,23 +62,25 @@
                     <div class="form-group">
                         <label for="txt_phonenumber ">Mobile Number:</label>
                          <div class="input-group">
-                             <asp:TextBox ID="txt_phonenumber" runat="server"  CssClass="form-control" Width="85%" ></asp:TextBox>
+                             <asp:TextBox ID="txt_phonenumber" runat="server"  CssClass="form-control" Width="85%" placeholder="enter with contry code"></asp:TextBox>
                           </div>
                      </div>
 
                     
                     <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Submit" CssClass="btn btn-login" Height="51px" />
-                
+                    <br />
+                    <br />
+                        <center>          
+                            <asp:HyperLink ID="HyperLink2" CssClass="btn" runat="server" NavigateUrl="User_Panel.aspx" >Back</asp:HyperLink>
+                    </center> 
                                               
                     </div>
                 </div>
             </div>
         
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="User_Panel.aspx" >Back</asp:HyperLink>
 
   
-        <div id="flashMessage" style="display: none; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; margin-top: 20px; border-radius: 5px;"></div>
+
 
 
     </form>

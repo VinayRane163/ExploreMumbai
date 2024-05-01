@@ -25,7 +25,7 @@ namespace ExploreMumbai
                         rptGuides.DataSource = reader;
                         rptGuides.DataBind();
                     }
-                }   
+                }
             }
         }
 
@@ -37,13 +37,15 @@ namespace ExploreMumbai
 
             }
 
-            if (string.IsNullOrWhiteSpace(txt_Review.Text) )
+            if (string.IsNullOrWhiteSpace(txt_Review.Text))
             {
-                
+                string script = "alert('are u comedy');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "FReviewExistsScript", script, true);
+
                 return;
             }
 
-            if(ReviewExist())
+            if (ReviewExist())
             {
                 string script = "alert('You already gave review, if you want you can update it');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "FReviewExistsScript", script, true);
@@ -67,12 +69,18 @@ namespace ExploreMumbai
                 SqlCommand cmd = new SqlCommand("INSERT INTO Reviews (username, review,userid) VALUES (@username, @review,@userid)", conn);
                 cmd.Parameters.AddWithValue("@review", txt_Review.Text);
                 cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@userid",userid);
+                cmd.Parameters.AddWithValue("@userid", userid);
 
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
+                string script = "alert('review added sucessfully');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ReviewUpdateScript", script, true);
                 cleartext();
+                Response.Redirect(Request.RawUrl);
+
+
+                Response.Redirect(Request.RawUrl);
 
                 void cleartext()
                 {
@@ -109,33 +117,45 @@ namespace ExploreMumbai
                 Response.Redirect("Login.aspx");
 
             }
-            string userid = Session["User_id"].ToString();
-
-            SqlConnection conn = new SqlConnection("Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True");
-            conn.Open();
-
-            SqlCommand uname = new SqlCommand("SELECT User_Name FROM UserInfo WHERE User_id = @userid", conn);
-            uname.Parameters.AddWithValue("@userid", userid);
-
-            string username = uname.ExecuteScalar() as string;
-
-            SqlCommand cmd = new SqlCommand("Update  Reviews set review=@review where userid=@userid ", conn);
-            cmd.Parameters.AddWithValue("@review", txt_Review.Text);
-            cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@userid", userid);
-
-            cmd.ExecuteNonQuery();
-
-            conn.Close();
-            string script = "alert('review updated sucessfully');";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ReviewUpdateScript", script, true);
-
-
-            cleartext();
-
-            void cleartext()
+            if (string.IsNullOrEmpty(txt_Review.Text))
             {
-                txt_Review.Text = "";
+                string nullscript = "alert('to update please fill in the required field');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ReviewUpdateScript", nullscript, true);
+
+            }
+
+            else
+            {
+
+                string userid = Session["User_id"].ToString();
+
+                SqlConnection conn = new SqlConnection("Server=LAPTOP-TAP8U6AD\\SQLEXPRESS;Database=ExploreMumbai;Trusted_Connection=True");
+                conn.Open();
+
+                SqlCommand uname = new SqlCommand("SELECT User_Name FROM UserInfo WHERE User_id = @userid", conn);
+                uname.Parameters.AddWithValue("@userid", userid);
+
+                string username = uname.ExecuteScalar() as string;
+
+                SqlCommand cmd = new SqlCommand("Update  Reviews set review=@review where userid=@userid ", conn);
+                cmd.Parameters.AddWithValue("@review", txt_Review.Text);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@userid", userid);
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                Response.Redirect(Request.RawUrl);
+
+
+
+                cleartext();
+                Response.Redirect(Request.RawUrl);
+
+                void cleartext()
+                {
+                    txt_Review.Text = "";
+                }
             }
         }
     }

@@ -9,16 +9,40 @@
     <style>
         body {
             background-color: #f8f9fa;
+            animation :images 40s infinite;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
         }
 
+           @keyframes images{
+        0%{
+           background-image:url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg");
+          }
+       25%{
+           background-image:url("https://indianparyatak.com/wp-content/uploads/2022/09/juhu-beach-mumbai-indian-tourism-entry-fee-timings-holidays-reviews-header-1.jpg");
+       }
+       50%{
+           background-image:url("https://www.holidify.com/images/cmsuploads/compressed/shutterstock_694433434_20191213110339_20191213110412.png");
+       }
+       75%{
+            background-image:url("https://media-cdn.tripadvisor.com/media/photo-s/16/73/99/cd/photo2jpg.jpg");
+       }
+       100%{
+           background-image:url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/63/04/de/temple-big-view.jpg?w=1200&h=1200&s=1");
+       }
+   }
+     
         .registration-container {
-            background-color : cornflowerblue;  
+            background-color : lavender;  
             max-width: 500px;
             margin: auto;
-            margin-top: 50px;
+            margin-top: 10px;
             border: 1px solid #ddd;
             padding: 20px;
             border-radius: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .form-title {
@@ -29,6 +53,10 @@
         .form-group {
             margin-bottom: 20px;
         }
+        label{
+            background-color:lightblue;
+        }
+       
     </style>
         <script type="text/javascript">
             function togglePasswordVisibility() {
@@ -60,7 +88,7 @@
 </head>
 <body>
     <form id="form1" runat="server" class="container registration-container">
-        <h1 class="form-title" style="background-color: darkblue; color: white;">Registration Form</h1>
+        <h1 class="form-title" style="background-color: lightblue; color: black;">Registration Form</h1>
 
         <div class="form-group">
             <label for="txt_Name">Name:</label>
@@ -117,7 +145,7 @@
         </div>
 
         <div class="form-group text-center">
-            <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="btn btn-success" style="background-color: darkblue; color: white;" />
+            <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="btn btn-success" style="background-color: lightblue; color: white;" />
                 <br />
             <br />
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Login.aspx" CssClass="btn btn-outline-secondary btn-sm" Text="Login" style="background-color: forestgreen; color: black;" Height="36px" Width="88px"></asp:HyperLink>

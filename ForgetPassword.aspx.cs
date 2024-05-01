@@ -30,109 +30,60 @@ namespace ExploreMumbai
                 string script = "alert('please enter User Id (email) 🙂 ');";
                 ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", script, true);
             }
-            try
+            else
             {
-                string email = txtEmail.Text.Trim();
 
-                // Check if the email exists in the database
-                string user_id;
-                string newPassword;
 
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                try
                 {
-                    conn.Open();
+                    string email = txtEmail.Text.Trim();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT User_id FROM  UserInfo WHERE User_id = @User_id", conn))
+                    // Check if the email exists in the database
+                    string user_id;
+                    string Password;
+
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        cmd.Parameters.AddWithValue("@User_id", email);
+                        conn.Open();
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlCommand cmd = new SqlCommand("SELECT User_id, User_password FROM UserInfo WHERE User_id = @User_id", conn))
                         {
-                            if (reader.Read())
+                            cmd.Parameters.AddWithValue("@User_id", email);
+
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                user_id = reader["User_id"].ToString();
-                                newPassword = GenerateRandomPassword();
-
-                                LogMessage($"Generated password: {newPassword}");
-
-                                // Update the user's password in the database with the new temporary password
-                                UpdatePassword(user_id, newPassword);
-
-                                // Send a password reset link to the user's email
-                                SendResetEmail(email, user_id, newPassword);
-
-                                string script = "alert('Password reset successful. Check your email for further instructions.');";
-                                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", script, true);
-                                clear();
-
-                                void clear()
+                                if (reader.Read())
                                 {
-                                    txtEmail.Text = "";
+                                    user_id = reader["User_id"].ToString();
+                                    Password = reader["User_password"].ToString();
+
+                                    // Send a password reset link to the user's email using the existing password
+                                    SendResetEmail(email, user_id, Password);
+
+                                    string script = "alert('Password reset successful. Check your email for further instructions.');";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", script, true);
+                                    clear();
+
+                                    void clear()
+                                    {
+                                        txtEmail.Text = "";
+                                    }
+                                }
+                                else
+                                {
+                                    string script = "alert('User with the provided email does not exist');";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", script, true);
                                 }
                             }
-                            else
-                            {
-                                string script = "alert('User with the provided email does not exist');";
-                                ClientScript.RegisterStartupScript(this.GetType(), "PopupScript", script, true);
-
-
-                            }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                lblMessage.Text = "Error: " + ex.Message;
-            }
-        }
-
-
-        private string GenerateRandomPassword()
-        {
-            // Generate a random password (you may use a more secure method)
-            return Guid.NewGuid().ToString().Substring(0, 8);
-        }
-
-
-        private void UpdatePassword(string user_id, string newPassword)
-        {
-            try
-            {
-                // Hash the new password before updating in the database
-                string hashedPassword = HashPassword(newPassword);
-
-                // Log the generated and hashed password
-                LogMessage($"Generated password: {newPassword}");
-                LogMessage($"Hashed password before update: {hashedPassword}");
-
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                catch (Exception ex)
                 {
-                    conn.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("UPDATE UserInfo SET User_password=@User_password WHERE User_id=@User_id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@User_password", newPassword);
-                        cmd.Parameters.AddWithValue("@User_id", user_id);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected == 0)
-                        {
-                            LogMessage($"No rows updated for user {user_id}. Check if the user exists in the database.");
-                        }
-                    }
+                    lblMessage.Text = "Error: " + ex.Message;
                 }
+            }
 
-                // Log the successful update
-                LogMessage($"Password updated successfully for user {user_id}");
-            }
-            catch (Exception ex)
-            {
-                // Log the exception
-                LogException(ex);
-                throw; // Re-throw the exception to propagate it to the caller
-            }
         }
 
 
@@ -148,17 +99,9 @@ namespace ExploreMumbai
 
 
 
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-            }
-        }
 
-        // Modify the SendResetEmail method
-        private void SendResetEmail(string email, string username, string newPassword)
+
+        private void SendResetEmail(string email, string username, string Password)
         {
             try
             {
@@ -169,8 +112,8 @@ namespace ExploreMumbai
                 string smtpPassword = "svrc qelk zbvx nxle";
 
                 // Email content
-                string subject = "Password Reset - Explore Mumbai";
-                string body = $"Dear {username},\n\nYour password has been reset to: {newPassword}\n\nPlease change your password after logging in.\n\nSincerely,\nExploreMumbai";
+                string subject = "Password Recover - Explore Mumbai";
+                string body = $"Dear {username},\n\nYour password is : {Password}\n\nPlease change your password after logging in.\n\nSincerely,\nExploreMumbai";
 
                 using (SmtpClient smtpClient = new SmtpClient(smtpHost, smtpPort))
                 {

@@ -23,7 +23,7 @@
         }
 
         .card-header {
-            background-color: yellow;
+            background-color: lavender;
             color: black;
             text-align: center;
             font-weight: bold;
@@ -41,14 +41,14 @@
         }
 
         .btn-login {
-            background-color: yellow;
+            background-color: lavender;
             color: black;
             border-radius: 20px;
         }
 
         .btn-back {
-            background-color: green;
-            color: white;
+            background-color: lavender;
+            color: black;
             border-radius: 20px
         }
 
@@ -65,7 +65,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            User Login
+                            FORGET PASSWORD
                         </div>
                         <div class="card-body">
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email" Width="100%"></asp:TextBox>

@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Guide Registration</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
     <script type="text/javascript">
         function showImage(input) {
             var fileInput = document.getElementById('<%= imageUpload.ClientID %>');
@@ -32,25 +33,25 @@
         .login-container {
             max-width: 600px;
             margin: auto;
-            margin-top: 50px;
+            margin-top: 10px;
         }
 
         .card-header {
-            background-color: red;
+            background-color: lavender;
             color: black;
             text-align: center;
             font-weight: bold;
         }
 
         .card {
-            border: 1px solid rgba(0, 0, 0, .125);
+            border: 1px solid rgba(0, 0, 0, .25);
             border-radius: .25rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .5);
         }
 
         .btn-login {
-        background-color: red;
-        color: white;
+        background-color: lavender;
+        color: black;
         width: 100%;
         margin-top: 20px;
         }
@@ -88,9 +89,12 @@
                     </div>
                
                     <div class="form-group col-md-6">
-                        <label for="Guide_Age">Guide Age:</label>
-                        <asp:TextBox ID="Guide_Age" runat="server" CssClass="form-control"></asp:TextBox>
+                        <label for="Guide_Age">Guide Birthdate:</label>
+                        <asp:TextBox ID="Guide_Age" placeholder="dd-mm-yyyy" runat="server" CssClass="form-control"></asp:TextBox>
+                        
+
                     </div>
+
                          </div>
                             <div class="form-row">
                                  <div class="form-group col-md-6">

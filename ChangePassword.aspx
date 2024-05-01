@@ -8,37 +8,73 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <style>
       body {
-          background-color: #f8f9fa;
+          background-color: lightblue;
       }
 
       .login-container {
                      max-width: 600px;
           margin: auto;
           margin-top: 50px;
+          
       }
 
       .card {
           border: 1px solid rgba(0, 0, 0, .125);
           border-radius: .25rem;
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+          
       }
 
       .card-header {
-          background-color: mediumpurple;
-          color: white;
+          background-color: lavender;
+          color: black;
           text-align: center;
           font-weight: bold;
+          border: 1px solid black;
+border-radius: 5px;
       }
 
       .btn-login {
-          background-color: mediumpurple;
-          color: white;
+          background-color: lavender;
+          color: black;
           width: 100%;
           margin-top: 20px;
+          border: 1px solid black;
+border-radius: 5px;
       }
 
+      .hehe{
+          
+         background-color : lavender;
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: black;
+        text-decoration: none;
+        width:58px;
+        margin-top:30px;     
+          padding: 10px;
+          border: 1px solid black;
+          border-radius: 5px;
+          cursor: pointer;
+          
+      }
      
+      .hehe:hover{
+          background-color:lavender;
+          color:black;
+            transform: scale(1.02);
+            
 
+      }
+      .a{
+          text-decoration:none;
+          color:black;
+      }
+      .a:hover{
+          text-decoration:none;
+            color:black;
+      }
       
   </style>
       <script type="text/javascript">
@@ -119,17 +155,19 @@
 
 
 
-                    <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Submit" CssClass="btn btn-login" Height="51px" />
+                    <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Submit" CssClass="btn btn-login " Height="51px" />
              
                 </div>
+               <center> <div class="hehe"> 
+                    <asp:HyperLink  ID="HyperLink1" CssClass="a" runat="server" NavigateUrl="User_Panel.aspx" >Back</asp:HyperLink>     
+                </div>
+                   </center>
+
             </div>
-        </div>
-  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="User_Panel.aspx" >Back</asp:HyperLink>
+            </div>
+       
 
   
-        <div id="flashMessage" style="display: none; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; margin-top: 20px; border-radius: 5px;"></div>
 
 
     </form>

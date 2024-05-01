@@ -42,30 +42,30 @@ namespace ExploreMumbai
         protected global::System.Web.UI.WebControls.Button CNG_Password;
 
         /// <summary>
-        /// cng_INfo control.
+        /// CNG_INFO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cng_INfo;
+        protected global::System.Web.UI.WebControls.Button CNG_INFO;
 
         /// <summary>
-        /// Btn_Logout control.
+        /// BtnLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Logout;
+        protected global::System.Web.UI.WebControls.Button BtnLogout;
 
         /// <summary>
-        /// Back control.
+        /// BtnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Back;
+        protected global::System.Web.UI.WebControls.Button BtnBack;
     }
 }

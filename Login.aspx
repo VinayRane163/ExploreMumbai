@@ -7,15 +7,33 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <style>
-        body {
-             background-image: url('https://indianparyatak.com/wp-content/uploads/2022/09/juhu-beach-mumbai-indian-tourism-entry-fee-timings-holidays-reviews-header-1.jpg');
-             background-repeat: no-repeat;
-             background-size: auto;
-             background-position: center center;
-             background-attachment: fixed;
-             background-color: #f8f9fa;
-        }
+          body {
+        background-image: url('https://indianparyatak.com/wp-content/uploads/2022/09/juhu-beach-mumbai-indian-tourism-entry-fee-timings-holidays-reviews-header-1.jpg');
+        animation :images 40s infinite;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        
+          }
 
+    @keyframes images{
+         0%{
+            background-image:url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg");
+           }
+        25%{
+            background-image:url("https://indianparyatak.com/wp-content/uploads/2022/09/juhu-beach-mumbai-indian-tourism-entry-fee-timings-holidays-reviews-header-1.jpg");
+        }
+        50%{
+            background-image:url("https://www.holidify.com/images/cmsuploads/compressed/shutterstock_694433434_20191213110339_20191213110412.png");
+        }
+        75%{
+             background-image:url("https://media-cdn.tripadvisor.com/media/photo-s/16/73/99/cd/photo2jpg.jpg");
+        }
+        100%{
+            background-image:url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/63/04/de/temple-big-view.jpg?w=1200&h=1200&s=1");
+        }
+    }
         .login-container {
             max-width: 600px;
             margin: auto;
@@ -29,14 +47,14 @@
         }
 
         .card-header {
-            background-color: #28a745;
-            color: white;
+            background-color: lavender;
+            color: black;
             text-align: center;
             font-weight: bold;
         }
 
         .btn-login {
-              background-color : forestgreen;
+              background-color : lavender;
               display: block;
               text-align: center;
               margin-top: 15px;
@@ -49,60 +67,43 @@
               width : 100%;
         }
 
-         .register-link {
-      background-color : cornflowerblue;
-        display: block;
-         text-align: center;
-        margin-top: 15px;
-        color: white;
-        text-decoration: none;
-        padding: 10px;
-        border: 1px solid black;
-        border-radius: 5px;
-        cursor: pointer;
-        width : 100%;
+         .btn-login:hover{
+                     text-decoration: none;
+                     color:BLACK
+
          }
 
 
-        .Admin-link {
-            background-color : red;
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: black;
-            text-decoration: none;
-            padding: 10px;
-            border: 1px solid black;
-            border-radius: 5px;
-            cursor: pointer;
-            width : 100%;
+       
+
+
+        
+        .auto-style1 {
+            position: relative;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-clip: border-box;
+            border-radius: .25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+            left: 0px;
+            top: 0px;
+            background-color: none;
+            backdrop-filter: blur(5px);            
         }
 
-        .Forget-link {
-            background-color : yellow ;
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: black;
-            text-decoration: none;
-            padding: 10px;
-            border: 1px solid black;
-            border-radius: 5px;
-            cursor: pointer;
-            width : 100%;
+        .hehe{
+            background-color:lavender;
         }
 
         
     </style>
         <script type="text/javascript">
-            function showFlashMessage(message) {
-                var flashMessage = document.getElementById('flashMessage');
-                flashMessage.innerHTML = message;
-                flashMessage.style.display = 'block';
-                setTimeout(function () {
-                    flashMessage.style.display = 'none';
-                }, 2000);
-            }
+            
             // for button to see and unsee password
 
             function togglePasswordVisibility() {
@@ -121,20 +122,21 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    
+    <form id="form1" runat="server" >
         <div class="container login-container">
-            <div class="card">
+            <div class="auto-style1">
                 <div class="card-header">
                     User Login
                 </div>
                 <div class="card-body">
                    <div class="form-group">
-                      <label for="TxtUsername">User ID (Email):</label>
+                      <label for="TxtUsername"class="btn-light hehe">User ID (Email):</label>
                        <asp:TextBox ID="TxtUsername" runat="server" CssClass="form-control" Width="100%" BorderColor="#CCCCFF"></asp:TextBox>
                     </div>
 
-                   <div class="form-group">
-                       <label for="TxtPassword">Password:</label>
+                   <div class="form-group ">
+                       <label for="TxtPassword" class="btn-light hehe">Password:</label>
                        <div class="input-group">
                            <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control" Width="85%" TextMode="Password"></asp:TextBox>
                            <div class="input-group-append">
@@ -151,16 +153,15 @@
                    
                      
                    
-                 <asp:HyperLink ID="registerLink" runat="server" NavigateUrl="Registeration.aspx" CssClass="register-link">Register</asp:HyperLink>
+                 <asp:HyperLink ID="registerLink" runat="server" NavigateUrl="Registeration.aspx" CssClass="btn-login">Register</asp:HyperLink>
                     
-                    <asp:HyperLink ID="AdminLink" runat="server" NavigateUrl="AdminLogin.aspx" CssClass="Admin-link">Admin</asp:HyperLink>
+                    <asp:HyperLink ID="AdminLink" runat="server" NavigateUrl="AdminLogin.aspx" CssClass="btn-login">Admin</asp:HyperLink>
                          
-            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="ForgetPassword.aspx" CssClass="Forget-link ">Forget Password</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="ForgetPassword.aspx" CssClass="btn-login">Forget Password</asp:HyperLink>
         
                 </div>
             </div>
         </div>
-       <div id="flashMessage" style="display: none; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; margin-top: 20px; border-radius: 5px;"></div>
 
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

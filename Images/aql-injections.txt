@@ -1,0 +1,64 @@
+create database ExploreMumbai;
+
+CREATE TABLE AdminInfo(
+    Admin_id varchar(255) PRIMARY KEY,
+    Admin_password varchar(255) NOT NULL
+);
+
+CREATE TABLE booking(
+    BookingID INT IDENTITY(1,1) PRIMARY KEY,
+    User_id INT,
+    User_Name NVARCHAR(255),
+    User_mobile NVARCHAR(15),
+    User_Country NVARCHAR(50),
+    User_Address NVARCHAR(255),
+    travel_date DATE,
+    Tour_Name NVARCHAR(100),
+    Tour_Price DECIMAL(18,2),
+    Tour_People_Number INT,
+    Tour_Price_Total DECIMAL(18,2),
+    GuideName NVARCHAR(100),
+    Guideld INT
+);
+
+CREATE TABLE GuideInfo
+(
+    GuideID INT IDENTITY(1,1) PRIMARY KEY,
+    Guide_FirstName VARCHAR(255),
+    Guide_LastName VARCHAR(255),
+    Guide_Education VARCHAR(255),
+    Guide_Age INT,
+    Guide_Contact VARCHAR(255),
+    Guide_Description TEXT,
+    Guide_Image VARBINARY(MAX)
+);
+
+CREATE TABLE Reviews (
+    UserId INT,
+    Username VARCHAR(255),
+    Review TEXT,
+    PRIMARY KEY (UserId, Username)
+);
+
+CREATE TABLE ToursInfo (
+    Tour_Id INT IDENTITY(1,1) PRIMARY KEY,
+    Tour_Name VARCHAR(255) NOT NULL,
+    Tour_Price INT NOT NULL,
+    Tour_Description TEXT NOT NULL,
+    Tour_Image VARBINARY(MAX) NOT NULL
+);
+
+CREATE TABLE UserInfo(
+    User_Name varchar(255) NOT NULL,
+    User_id varchar(255) NOT NULL,
+    User_password varchar(255) NOT NULL,
+    User_mobile varchar(255) NOT NULL
+);
+
+CREATE TABLE GuideReviews (
+    UserId varchar(255),
+    Guide_name varchar(255),
+    Username VARCHAR(255),
+    Review TEXT,
+    PRIMARY KEY (UserId, Username)
+);
